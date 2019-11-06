@@ -57,7 +57,7 @@ pub struct TopicsTag {
 }
 
 //#[derive(Eq, PartialEq, Debug, Serialize, Deserialize, Queryable)]
-#[derive(Queryable)]
+#[derive(Queryable, Debug, Eq, PartialEq)]
 pub struct User {
     pub user_id: u32,
     pub user_name: String,

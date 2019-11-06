@@ -5,6 +5,8 @@ use std::env;
 
 pub mod models;
 pub mod schema;
+pub mod user;
+pub mod error;
 
 pub fn establish_connection() -> MysqlConnection {
     dotenv().ok();

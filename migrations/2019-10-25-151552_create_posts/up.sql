@@ -2,7 +2,7 @@
 # 用户表
 CREATE TABLE IF NOT EXISTS users(
                                     `user_id` INT UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
-                                    `user_name` VARCHAR(50) NOT NULL,                                         /* 用户名 */
+                                    `user_name` VARCHAR(50) UNIQUE NOT NULL,                                         /* 用户名 */
                                     `passwd` VARCHAR(50) NOT NULL,                                            /* 密码 */
                                     `create_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
                                     `update_time` TIMESTAMP NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
