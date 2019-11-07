@@ -21,11 +21,8 @@ pub fn add(title: String, content: String, user_id: u32, category_id: u32) -> Re
         .execute(&connection);
     match r {
         Ok(c) => {
-            if c == 1 {
-                Ok(())
-            } else {
-                Err(error::Error::InsertNumError)
-            }
+            if c == 1 { Ok(()) }
+            else { Err(error::Error::InsertNumError) }
         },
         Err(e) => {
             if let diesel::result::Error::DatabaseError(diesel::result::DatabaseErrorKind::ForeignKeyViolation, _) = e {

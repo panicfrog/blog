@@ -21,15 +21,19 @@ pub fn add(content: String, post_id: u32, sid: Option<u32>) -> Result<(), error:
 
     match r {
         Ok(c) => {
-            if c == 1 {
-                Ok(())
-            } else {
-                Err(error::Error::InsertNumError)
-            }
+            if c == 1 { Ok(()) }
+            else { Err(error::Error::InsertNumError) }
         },
         Err(e) => {
-            if let diesel::result::Error::DatabaseError(diesel::result::DatabaseErrorKind::UniqueViolation, _) = e {
-                Ok(())
+            if let diesel::result::Error::DatabaseError(diesel::result::DatabaseErrorKind::ForeignKeyViolation, _) = e {
+                let msg = if e.to_string().contains("post_id") {
+                    String::from("post not exists")
+                } else if e.to_string().contains("sid") {
+                    String::from("super comment not exists")
+                } else {
+                    e.to_string()
+                };
+                Err(error::Error::ForeignKeyViolation(msg))
             } else {
                 Err(error::Error::WapperError(e.to_string()))
             }
