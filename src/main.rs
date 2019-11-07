@@ -4,32 +4,13 @@ extern crate dotenv;
 
 mod db;
 
-use db::*;
-use db::models::*;
-use diesel::prelude::*;
-
 fn main() {
-//    let r = db::user::add(String::from("xiaoming"), String::from("123456"));
-//    r.map_err(|e| {
-//       println!("{:?}", e);
-//    });
-//    let r = db::user::find(String::from("nihaohahaha"));
-//    let r = db::user::changePasswd(String::from("yeyongping2"), String::from("123456"));
-
-//    let r = db::tag::add(vec![String::from("rust"), String::from("swift")]);
-//    r.map_err(|e| {
-//       println!("{:?}", e);
-//    });
-//
-//    let ts = tag::getAll();
-//    println!("{:?}", ts);
-
-    let r = db::category::add(vec![String::from("技术"), String::from("生活")]);
+    let r = db::post::add(String::from("自定义标题"), String::from("夜，结束了一天的喧嚣后安静下来，伴随着远处路灯那微弱的光。风，毫无预兆地席卷整片旷野，撩动人的思绪万千。星，遥遥地挂在天空之中，闪烁着它那微微星光，不如阳光般灿烂却如花儿般如痴如醉"), 100001, 100000);
     r.map_err(|e| {
-        println!("{:?}", e);
+       if let db::error::Error::ForeignKeyViolation(s) = e {
+           println!("{}", s);
+       }
     });
-    let cs = category::get_all();
-    println!("{:?}", cs);
 }
 
 /*

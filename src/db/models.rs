@@ -17,6 +17,8 @@ pub struct Category {
 pub struct Comment {
     comment_id: u32,
     content: String,
+    post_id: u32,
+    sid: Option<u32>,
     create_time: NaiveDateTime,
     update_time: Option<NaiveDateTime>,
     delete_time: Option<NaiveDateTime>,
@@ -34,12 +36,12 @@ pub struct Tag {
 
 //#[derive(Eq, PartialEq, Debug, Serialize, Deserialize, Queryable)]
 #[derive(Queryable)]
-pub struct Topic {
-    topic_id: u32,
+pub struct Post {
+    post_id: u32,
     title: String,
     content: String,
-    user_id: i32,
-    category_id: i32,
+    user_id: u32,
+    category_id: u32,
     create_time: NaiveDateTime,
     update_time: Option<NaiveDateTime>,
     delete_time: Option<NaiveDateTime>,
@@ -47,9 +49,9 @@ pub struct Topic {
 
 //#[derive(Eq, PartialEq, Debug, Serialize, Deserialize, Queryable)]
 #[derive(Queryable)]
-pub struct TopicsTag {
-    topic_tag_id: u32,
-    topic_id: i32,
+pub struct PostsTag {
+    post_tag_id: u32,
+    post_id: i32,
     tag_id: i32,
     create_time: NaiveDateTime,
     update_time: Option<NaiveDateTime>,
