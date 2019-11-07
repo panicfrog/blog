@@ -13,6 +13,7 @@ table! {
         comment_id -> Unsigned<Integer>,
         content -> Varchar,
         topic_id -> Unsigned<Integer>,
+        sid -> Nullable<Unsigned<Integer>>,
         create_time -> Timestamp,
         update_time -> Nullable<Timestamp>,
         delete_time -> Nullable<Timestamp>,

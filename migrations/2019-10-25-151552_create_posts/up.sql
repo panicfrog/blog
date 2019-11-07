@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS users(
 # 分类表
 CREATE TABLE IF NOT EXISTS categorys(
                                         `category_id` INT UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
-                                        `name` VARCHAR(20) NOT NULL,                                               /* 类别名称 */
+                                        `name` VARCHAR(20) UNIQUE NOT NULL,                                               /* 类别名称 */
                                         `create_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
                                         `update_time` TIMESTAMP NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
                                         `delete_time` TIMESTAMP NULL DEFAULT NULL
@@ -58,10 +58,12 @@ CREATE TABLE IF NOT EXISTS comments(
                                        `comment_id` INT UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
                                        `content` VARCHAR(300) NOT NULL,
                                        `topic_id` INT UNSIGNED NOT NULL,
+                                       `sid` INT UNSIGNED,
                                        `create_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
                                        `update_time` TIMESTAMP NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
                                        `delete_time` TIMESTAMP NULL DEFAULT NULL,
-                                       FOREIGN KEY (topic_id) REFERENCES topics(topic_id)
+                                       FOREIGN KEY (topic_id) REFERENCES topics(topic_id),
+                                       FOREIGN KEY (sid) REFERENCES comments(comment_id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=100000;
 
 # 添加一个用户

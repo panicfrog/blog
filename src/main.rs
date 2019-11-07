@@ -21,9 +21,15 @@ fn main() {
 //       println!("{:?}", e);
 //    });
 //
-//    tag::getAll();
+//    let ts = tag::getAll();
+//    println!("{:?}", ts);
 
-
+    let r = db::category::add(vec![String::from("技术"), String::from("生活")]);
+    r.map_err(|e| {
+        println!("{:?}", e);
+    });
+    let cs = category::get_all();
+    println!("{:?}", cs);
 }
 
 /*

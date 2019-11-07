@@ -36,16 +36,12 @@ pub fn add(ts: Vec<String>) -> Result<(), error::Error> {
     }
 }
 
-pub fn getAll(){
+pub fn get_all() -> Result<Vec<Tag>, error::Error> {
     let connection = establish_connection();
     let r = tags::dsl::tags.filter(tags::dsl::name.ne(String::from("")))
         .load::<Tag>(&connection);
     match r {
-        Ok(c) => {
-          println!("{:?}", c);
-        },
-        Err(e) => {
-            println!("{:?}", e);
-        }
+        Ok(c) => Ok(c),
+        Err(e) => Err(error::Error::WapperError(e.to_string()))
     }
 }

@@ -3,7 +3,7 @@ use super::schema::*;
 //use serde::{Serialize, Deserialize};
 
 //#[derive(Eq, PartialEq, Debug, Serialize, Deserialize, Queryable)]
-#[derive(Queryable)]
+#[derive(Queryable, Debug)]
 pub struct Category {
     category_id: u32,
     name: String,

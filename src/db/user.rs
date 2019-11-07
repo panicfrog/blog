@@ -54,7 +54,7 @@ pub fn find(un: String) -> Result<User, error::Error> {
     }
 }
 
-pub fn changePasswd(un: String, pw: String) -> Result<(), error::Error> {
+pub fn change_passwd(un: String, pw: String) -> Result<(), error::Error> {
     let u = find(un);
     match u {
         Ok(_u) => {
