@@ -7,6 +7,7 @@ pub mod models;
 pub mod schema;
 pub mod user;
 pub mod error;
+pub mod tag;
 
 pub fn establish_connection() -> MysqlConnection {
     dotenv().ok();

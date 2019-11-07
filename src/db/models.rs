@@ -23,7 +23,7 @@ pub struct Comment {
 }
 
 //#[derive(Eq, PartialEq, Debug, Serialize, Deserialize, Queryable)]
-#[derive(Queryable)]
+#[derive(Queryable, Debug)]
 pub struct Tag {
     tag_id: u32,
     name: String,

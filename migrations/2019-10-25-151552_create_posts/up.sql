@@ -35,10 +35,10 @@ CREATE TABLE IF NOT EXISTS topics(
 # 标签表
 CREATE TABLE IF NOT EXISTS tags (
                                     `tag_id` INT UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
-                                    `name` VARCHAR(20) NOT NULL UNIQUE,                                        /* 标签名称 */
-                                    `delete_time` TIMESTAMP NULL DEFAULT NULL,
+                                    `name` VARCHAR(20) UNIQUE NOT NULL UNIQUE,                                        /* 标签名称 */
                                     `create_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-                                    `update_time` TIMESTAMP NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP
+                                    `update_time` TIMESTAMP NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+                                    `delete_time` TIMESTAMP NULL DEFAULT NULL
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=100000;
 
 # topic - 标签 关系表

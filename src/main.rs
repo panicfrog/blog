@@ -14,10 +14,16 @@ fn main() {
 //       println!("{:?}", e);
 //    });
 //    let r = db::user::find(String::from("nihaohahaha"));
-    let r = db::user::changePasswd(String::from("yeyongping2"), String::from("123456"));
-    r.map_err(|e| {
-       println!("{:?}", e);
-    });
+//    let r = db::user::changePasswd(String::from("yeyongping2"), String::from("123456"));
+
+//    let r = db::tag::add(vec![String::from("rust"), String::from("swift")]);
+//    r.map_err(|e| {
+//       println!("{:?}", e);
+//    });
+//
+//    tag::getAll();
+
+
 }
 
 /*

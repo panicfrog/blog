@@ -23,9 +23,9 @@ table! {
     tags (tag_id) {
         tag_id -> Unsigned<Integer>,
         name -> Varchar,
-        delete_time -> Nullable<Timestamp>,
         create_time -> Timestamp,
         update_time -> Nullable<Timestamp>,
+        delete_time -> Nullable<Timestamp>,
     }
 }
 
