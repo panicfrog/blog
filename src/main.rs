@@ -1,16 +1,14 @@
 #[macro_use]
 extern crate diesel;
 extern crate dotenv;
+#[macro_use]
+extern crate serde;
 
 mod db;
+mod api;
 
 fn main() {
-    let r = db::post::add(String::from("自定义标题"), String::from("夜，结束了一天的喧嚣后安静下来，伴随着远处路灯那微弱的光。风，毫无预兆地席卷整片旷野，撩动人的思绪万千。星，遥遥地挂在天空之中，闪烁着它那微微星光，不如阳光般灿烂却如花儿般如痴如醉"), 100001, 100000);
-    r.map_err(|e| {
-       if let db::error::Error::ForeignKeyViolation(s) = e {
-           println!("{}", s);
-       }
-    });
+    api::run();
 }
 
 /*

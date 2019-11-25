@@ -38,6 +38,23 @@ pub fn add(un: String, pd: String) -> Result<(), error::Error> {
     }
 }
 
+pub fn verification(u: &str, p: &str) -> Result<(), error::Error> {
+    let connection = establish_connection();
+    let r: QueryResult<User> = users::dsl::users.filter(user_name.eq(u))
+        .filter(passwd.eq(p))
+        .first(&connection);
+    match r {
+        Ok(u) => Ok(()),
+        Err(e) => {
+            if let diesel::NotFound = e {
+                Err(error::Error::NotFound)
+            } else {
+                Err(error::Error::WapperError(e.to_string()))
+            }
+        }
+    }
+}
+
 pub fn find(un: String) -> Result<User, error::Error> {
     let connection = establish_connection();
     let r: QueryResult<User> = users::dsl::users.filter(users::dsl::user_name.eq(un))

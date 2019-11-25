@@ -1,1 +1,0 @@
-mysql -uroot -p < $PWD/create.sql
